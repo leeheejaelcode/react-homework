@@ -1,7 +1,7 @@
-export default function ProductLink({ name, imageUrl }) {
+export default function ProductLink({ imageUrl }) {
   return (
-    <a className="product-link">
-      <img src={imageUrl} alt={name} />
+    <a href="/" className="product-link">
+      <img src={imageUrl} alt="" />
     </a>
   );
 }
