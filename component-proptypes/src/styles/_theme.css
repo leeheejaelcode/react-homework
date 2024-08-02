@@ -1,0 +1,9 @@
+:root {
+  --border-radius: 4px;
+  --border-color: #ddd;
+  --gap-lg: 16px;
+  --gap-md: 8px;
+  --font-md: 1rem;
+  --font-sm: 0.875rem;
+  --font-color: #333;
+}
