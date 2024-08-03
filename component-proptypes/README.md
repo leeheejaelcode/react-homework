@@ -10,5 +10,5 @@ propType,TS 둘다 한번도 사용해본 적이 없어서 수업내용을 토�
 
 부족한 부분은 피드백 주시면 감사하겠습니다!
 
-[propType](./src/main.jsx)
-[TS](./src/main.tsx)
+- [propType 버전](./src/main.jsx)
+- [TS 버전](./src/main.tsx)
