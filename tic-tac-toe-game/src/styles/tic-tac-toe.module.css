@@ -29,10 +29,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  flex-flow: row wrap;
 }
 
 .Square {
+  min-width: var(--square-size);
+  min-height: var(--square-size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +42,7 @@
   padding: 0;
   color: var(--primary-color);
   font-size: 20px;
+  box-sizing: border-box;
 }
 
 .History {

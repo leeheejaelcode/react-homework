@@ -1,12 +1,30 @@
 import S from '@/styles/tic-tac-toe.module.css';
 import History from '@/component/History/History';
 import Board from '@/component/Board/Board';
+import { PLAYER_LIST, INITIAL_STATE, PLAYER_LENGTH } from './constants';
+import { useState } from 'react';
+import { Square } from '@/component/Square/Square';
+
 export default function TicTacToeGame() {
+  const { ONE, TWO } = PLAYER_LIST;
+  const [squares, setSquares] = useState(INITIAL_STATE);
+  const isTurn = squares.filter((s) => s === null).length % PLAYER_LENGTH === 0;
+  const player = isTurn ? ONE : TWO;
+  const handleClick = (index) => () => {
+    // const newSquares = squares.map((square, i) =>
+    //   i === index ? player : square
+    // );
+    // setSquares(newSquares);
+    setSquares((squares) =>
+      squares.map((square, i) => (i === index ? player : square))
+    );
+  };
+
   return (
     <>
       <h1 className={S.Title}>Tic-Tac-Toe</h1>
       <div className={S.Game}>
-        <Board />
+        <Board squares={squares} gamePlay={handleClick} player={player} />
         <History />
       </div>
     </>
