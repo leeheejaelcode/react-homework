@@ -1,9 +1,13 @@
 import S from '@/styles/tic-tac-toe.module.css';
 import History from '@/component/History/History';
 import Board from '@/component/Board/Board';
-import { PLAYER_LIST, INITIAL_STATE, PLAYER_LENGTH } from './constants';
+import {
+  PLAYER_LIST,
+  INITIAL_STATE,
+  PLAYER_LENGTH,
+  findWinner,
+} from './constants';
 import { useState } from 'react';
-import { Square } from '@/component/Square/Square';
 
 export default function TicTacToeGame() {
   const { ONE, TWO } = PLAYER_LIST;
@@ -19,12 +23,19 @@ export default function TicTacToeGame() {
       squares.map((square, i) => (i === index ? player : square))
     );
   };
-
+  const winner = findWinner(squares);
+  const isGameEnd = squares.every((s) => s !== null);
   return (
     <>
       <h1 className={S.Title}>Tic-Tac-Toe</h1>
       <div className={S.Game}>
-        <Board squares={squares} gamePlay={handleClick} player={player} />
+        <Board
+          squares={squares}
+          gamePlay={handleClick}
+          player={player}
+          winner={winner}
+          isGameEnd={isGameEnd}
+        />
         <History />
       </div>
     </>
