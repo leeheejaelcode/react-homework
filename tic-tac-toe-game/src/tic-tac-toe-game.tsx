@@ -10,22 +10,40 @@ import {
 import { useState } from 'react';
 
 export default function TicTacToeGame() {
-  const { ONE, TWO } = PLAYER_LIST;
-  const [squares, setSquares] = useState(INITIAL_STATE);
-  const isTurn = squares.filter((s) => s === null).length % PLAYER_LENGTH === 0;
-  const player = isTurn ? ONE : TWO;
-  const winner = findWinner(squares);
-  const isGameEnd = squares.every((s) => s !== null);
+  const [squares, setSquares] = useState([INITIAL_STATE]);
+  const [gameIndex, setGameIndex] = useState(0);
+  const currentSquares = squares[gameIndex];
+  const winner = findWinner(currentSquares);
+  const isTurn =
+    currentSquares.filter((s) => s === null).length % PLAYER_LENGTH === 0;
+  const player = isTurn ? PLAYER_LIST.ONE : PLAYER_LIST.TWO;
+  const isGameEnd = !winner.winner && currentSquares.every((s) => Boolean(s));
   const handleClick = (index) => () => {
-    // const newSquares = squares.map((square, i) =>
-    //   i === index ? player : square
-    // );
-    // setSquares(newSquares);
-    if (winner.winner) return;
+    if (winner.winner) {
+      alert('GAME OVER🥳');
+      return;
+    }
+    const nextGameIndex = gameIndex + 1;
 
-    setSquares((squares) =>
-      squares.map((square, i) => (i === index ? player : square))
+    setGameIndex(nextGameIndex);
+
+    const newSquares = currentSquares.map((square, i) =>
+      i === index ? player : square
     );
+
+    setSquares([...squares.slice(0, nextGameIndex), newSquares]);
+    // setSquares((squares) =>
+    //   squares.map((square, i) => (i === index ? player : square))
+    // );
+  };
+
+  const handleTimeTravel = (index) => () => {
+    setGameIndex(index);
+  };
+
+  const handleResetGame = () => {
+    setGameIndex(0);
+    setSquares([INITIAL_STATE]);
   };
 
   return (
@@ -33,13 +51,18 @@ export default function TicTacToeGame() {
       <h1 className={S.Title}>Tic-Tac-Toe</h1>
       <div className={S.Game}>
         <Board
-          squares={squares}
+          squares={currentSquares}
           gamePlay={handleClick}
           player={player}
           winner={winner}
           isGameEnd={isGameEnd}
+          resetGame={handleResetGame}
         />
-        <History />
+        <History
+          gameIndex={gameIndex}
+          squares={squares}
+          timeTravel={handleTimeTravel}
+        />
       </div>
     </>
   );

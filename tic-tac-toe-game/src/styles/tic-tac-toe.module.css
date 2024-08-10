@@ -1,13 +1,26 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #ffd700;
+  --square-size: 80px;
+  --radius--button: 4px;
+}
+
 .Title {
   text-align: center;
+}
+
+.Reset {
+  display: block;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: var(--radius--button);
+  border: none;
+  padding: 0.4em 0.8em;
 }
 .Game {
   display: flex;
   justify-content: center;
   gap: 60px;
-  --primary-color: #000000;
-  --secondary-color: #ffd700;
-  --square-size: 80px;
 }
 
 .Board {
@@ -46,7 +59,7 @@
 }
 
 .History {
-  margin-top: 38px;
+  margin-top: 16px;
   min-width: 100px;
 }
 
@@ -66,6 +79,6 @@
   background: var(--primary-color);
   color: var(--secondary-color);
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--radius--button);
   padding: 0.4em 0.8em;
 }

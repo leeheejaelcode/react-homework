@@ -8,10 +8,16 @@ export default function Board({
   player,
   winner,
   isGameEnd,
+  resetGame,
 }) {
   return (
     <div className={S.Board}>
-      <Status player={player} winner={winner} isGameEnd={isGameEnd} />
+      <Status
+        player={player}
+        winner={winner}
+        isGameEnd={isGameEnd}
+        resetGame={resetGame}
+      />
       <Squares squares={squares} gamePlay={gamePlay} winner={winner} />
     </div>
   );
