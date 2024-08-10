@@ -12,7 +12,7 @@ export default function Board({
   return (
     <div className={S.Board}>
       <Status player={player} winner={winner} isGameEnd={isGameEnd} />
-      <Squares squares={squares} gamePlay={gamePlay} />
+      <Squares squares={squares} gamePlay={gamePlay} winner={winner} />
     </div>
   );
 }
