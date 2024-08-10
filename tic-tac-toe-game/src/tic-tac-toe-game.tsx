@@ -14,17 +14,20 @@ export default function TicTacToeGame() {
   const [squares, setSquares] = useState(INITIAL_STATE);
   const isTurn = squares.filter((s) => s === null).length % PLAYER_LENGTH === 0;
   const player = isTurn ? ONE : TWO;
+  const winner = findWinner(squares);
+  const isGameEnd = squares.every((s) => s !== null);
   const handleClick = (index) => () => {
     // const newSquares = squares.map((square, i) =>
     //   i === index ? player : square
     // );
     // setSquares(newSquares);
+    if (winner.winner) return;
+
     setSquares((squares) =>
       squares.map((square, i) => (i === index ? player : square))
     );
   };
-  const winner = findWinner(squares);
-  const isGameEnd = squares.every((s) => s !== null);
+
   return (
     <>
       <h1 className={S.Title}>Tic-Tac-Toe</h1>
