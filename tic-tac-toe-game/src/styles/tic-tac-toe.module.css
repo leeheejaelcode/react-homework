@@ -33,6 +33,12 @@
   font-size: 20px;
 }
 
+.StatusContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .Squares {
   --board-size: calc(var(--square-size) * 3);
   width: var(--board-size);
@@ -72,7 +78,7 @@
 }
 
 .History li {
-  list-style-type: decimal-leading-zero;
+  list-style: none;
 }
 
 .History button {

@@ -1,6 +1,7 @@
 import S from '@/styles/tic-tac-toe.module.css';
 import Squares from '@/component/Squares/Squares';
 import Status from '@/component/Status/Status';
+import { board } from '@/@types/global';
 
 export default function Board({
   squares,
@@ -9,7 +10,7 @@ export default function Board({
   winner,
   isGameEnd,
   resetGame,
-}) {
+}: board): JSX.Element {
   return (
     <div className={S.Board}>
       <Status

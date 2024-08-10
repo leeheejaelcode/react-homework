@@ -1,13 +1,18 @@
 import S from '@/styles/tic-tac-toe.module.css';
+import { square } from '@/@types/global';
 
-export default function Squares({ children, gamePlay, style }) {
-  const isdisabled = children !== null;
+export default function Square({
+  gamePlay,
+  style,
+  children,
+}: square): JSX.Element {
+  const isDisabled = children !== null;
 
   return (
     <button
       className={S.Square}
       onClick={gamePlay}
-      disabled={isdisabled}
+      disabled={isDisabled}
       style={style}
     >
       {children}

@@ -1,9 +1,12 @@
-export const PLAYER_LIST = {
+export const PLAYER_LIST: {
+  ONE: '👽';
+  TWO: '👻';
+} = {
   ONE: '👽',
   TWO: '👻',
 };
 
-const WINNER_CONDITIONS = [
+export const WINNER_CONDITIONS: number[][] = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -14,8 +17,13 @@ const WINNER_CONDITIONS = [
   [2, 4, 6],
 ];
 
-export const findWinner = (squares) => {
-  let winnerInfo = {
+interface WinnerInfo {
+  winner: string | null;
+  condition: number[];
+}
+
+export const findWinner = (squares: (string | null)[]): WinnerInfo => {
+  let winnerInfo: WinnerInfo = {
     winner: null,
     condition: [],
   };
@@ -33,6 +41,8 @@ export const findWinner = (squares) => {
   return winnerInfo;
 };
 
-export const INITIAL_STATE = Array(9).fill(null);
+export const INITIAL_STATE: (string | null)[] = Array(9).fill(null);
 
-export const PLAYER_LENGTH = Object.keys(PLAYER_LIST).length;
+export const PLAYER_LENGTH: number = Object.keys(PLAYER_LIST).length;
+
+export const WINNER_COLOR: string = '#ffd700';

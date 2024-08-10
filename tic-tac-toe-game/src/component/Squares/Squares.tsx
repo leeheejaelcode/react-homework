@@ -1,17 +1,23 @@
 import S from '@/styles/tic-tac-toe.module.css';
 import Square from '@/component/Square/Square';
+import { WINNER_COLOR } from '@/constants';
+import { squares } from '@/@types/global';
 
-export default function Squares({ squares, gamePlay, winner }) {
+export default function Squares({
+  squares,
+  gamePlay,
+  winner,
+}: squares): JSX.Element {
   return (
     <div className={S.Squares}>
       {squares.map((item, index) => {
         const style = {
-          backgroundColor: null,
+          backgroundColor: '',
         };
         if (winner) {
           const [x, y, z] = winner.condition;
           if (index === x || index === y || index === z) {
-            style.backgroundColor = '#ffd700';
+            style.backgroundColor = WINNER_COLOR;
           }
         }
         return (

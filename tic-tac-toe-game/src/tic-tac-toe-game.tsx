@@ -6,7 +6,7 @@ import {
   INITIAL_STATE,
   PLAYER_LENGTH,
   findWinner,
-} from './constants';
+} from '@/constants';
 import { useState } from 'react';
 
 export default function TicTacToeGame() {
@@ -18,9 +18,9 @@ export default function TicTacToeGame() {
     currentSquares.filter((s) => s === null).length % PLAYER_LENGTH === 0;
   const player = isTurn ? PLAYER_LIST.ONE : PLAYER_LIST.TWO;
   const isGameEnd = !winner.winner && currentSquares.every((s) => Boolean(s));
-  const handleClick = (index) => () => {
+  const handleClick = (index: number) => () => {
     if (winner.winner) {
-      alert('GAME OVER🥳');
+      alert('GAME OVER🥲');
       return;
     }
     const nextGameIndex = gameIndex + 1;
@@ -37,7 +37,7 @@ export default function TicTacToeGame() {
     // );
   };
 
-  const handleTimeTravel = (index) => () => {
+  const handleTimeTravel = (index: number) => () => {
     setGameIndex(index);
   };
 
@@ -58,11 +58,7 @@ export default function TicTacToeGame() {
           isGameEnd={isGameEnd}
           resetGame={handleResetGame}
         />
-        <History
-          gameIndex={gameIndex}
-          squares={squares}
-          timeTravel={handleTimeTravel}
-        />
+        <History squares={squares} timeTravel={handleTimeTravel} />
       </div>
     </>
   );
