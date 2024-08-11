@@ -1,3 +1,14 @@
+// const PLAYER_ONE = prompt('첫번째 캐릭터를 정해주세요');
+// const PLAYER_TWO = prompt('두번째 캐릭터를 정해주세요');
+
+// export const PLAYER_LIST: {
+//   ONE: typeof PLAYER_ONE;
+//   TWO: typeof PLAYER_TWO;
+// } = {
+//   ONE: PLAYER_ONE,
+//   TWO: PLAYER_TWO,
+// };
+
 export const PLAYER_LIST: {
   ONE: '👽';
   TWO: '👻';
@@ -46,3 +57,4 @@ export const INITIAL_STATE: (string | null)[] = Array(9).fill(null);
 export const PLAYER_LENGTH: number = Object.keys(PLAYER_LIST).length;
 
 export const WINNER_COLOR: string = '#ffd700';
+export const DRAW_COLOR: string = '#FFB347 ';
