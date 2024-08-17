@@ -3,6 +3,7 @@ import { Logo } from '@/component/Logo/Logo';
 import { Title } from '@/component/Title/Title';
 import { Button } from '@/component/Button/Button';
 import { Modal } from '@/component/Modal/Modal';
+import { Doit } from '@/component/Doit/Doit';
 
 import S from '@/Page.module.css';
 import { timeline } from 'motion';
@@ -15,27 +16,25 @@ export default function Page() {
   const buttonRef = useRef(null);
 
   const [modal, setModal] = useState(false);
-  const [data, setData] = useState(INITIAL_DATA);
+  const [TodoData, setTodoData] = useState(INITIAL_DATA);
   const handleModalOpen = () => {
     setModal(true);
   };
   const handleModalClose = () => {
     setModal(false);
   };
-  const handleModalSave = () => {
-    console.log('저장');
-    // setModal(false);
+  const handleSaveData = (data) => {
+    setTodoData([...TodoData, data]);
+    setModal(false);
   };
 
   const modalStyle = modal
-    ? {
-        transform: 'translateY(0px)',
-        backdropFilter: 'blur(3px)',
-      }
-    : {
-        transform: 'translateY(400px)',
-        backdropFilter: 'blur(0px)',
-      };
+    ? { transform: 'translateY(100px)' }
+    : { transform: 'translateY(400px)' };
+
+  const backdropStyle = modal
+    ? { transform: 'translateY(0px)', backdropFilter: 'blur(3px)' }
+    : { transform: 'translateY(4000px)', backdropFilter: 'blur(0px)' };
 
   useEffect(() => {
     const logoElement = logoRef.current;
@@ -48,6 +47,44 @@ export default function Page() {
       [buttonElement, { opacity: [0, 1], y: [20, 0] }, { duration: 0.4 }],
     ]);
   }, []);
+
+  const toggleTodoDoneStatus = (id) => () => {
+    const updatedData = TodoData.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          todo: !item.todo,
+          done: !item.done,
+        };
+      }
+      return item;
+    });
+
+    setTodoData(updatedData);
+  };
+
+  const handleCheckedArchive = (id) => () => {
+    const updatedData = TodoData.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          archive: !item.archive,
+        };
+      }
+      return item;
+    });
+
+    setTodoData(updatedData);
+  };
+
+  const handleFilterTodo = () => {
+    const updatedData = TodoData.filter((item) => item.todo);
+    setTodoData(updatedData);
+  };
+  const handleFilterDone = () => {
+    const updatedData = TodoData.filter((item) => item.done);
+    setTodoData(updatedData);
+  };
 
   return (
     <div className={S.page}>
@@ -68,11 +105,19 @@ export default function Page() {
         </svg>
         생각났어?
       </Button>
-
+      <Doit
+        TodoData={TodoData}
+        checkedTodo={toggleTodoDoneStatus}
+        checkedArchive={handleCheckedArchive}
+        handleFilterTodo={handleFilterTodo}
+        handleFilterDone={handleFilterDone}
+      />
       <Modal
         handleModalClose={handleModalClose}
-        handleModalSave={handleModalSave}
+        handleSaveData={handleSaveData}
         modalStyle={modalStyle}
+        backdropStyle={backdropStyle}
+        TodoData={TodoData}
       />
     </div>
   );

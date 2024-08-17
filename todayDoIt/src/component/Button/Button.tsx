@@ -8,9 +8,7 @@ export function Button({
 }) {
   const handleClick = (e) => {
     e.preventDefault();
-    if (func) {
-      func(); // 전달된 함수를 호출
-    }
+    func?.();
   };
   return (
     <button className={className} type={type} onClick={handleClick}>

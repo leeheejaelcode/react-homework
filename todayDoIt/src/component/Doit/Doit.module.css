@@ -1,0 +1,123 @@
+@import url('@/styles/_theme.css');
+
+.container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 16px 20px;
+  gap: 8px;
+  overflow: auto;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .info {
+    display: flex;
+    width: 242px;
+    min-width: 240px;
+    max-width: 480px;
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: var(--rounded-md, 12px);
+    background: var(--white, #fff);
+    box-shadow: 0px 4px 12px 0px rgba(0, 5, 14, 0.05);
+
+    .doitContainer {
+      position: relative;
+      width: 100%;
+      border-bottom: 2px solid var(--gray-200, #d9d9d9);
+
+      .title {
+        overflow: hidden;
+        color: var(--blue, #0760fb);
+        text-overflow: ellipsis;
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 8px;
+      }
+
+      .what {
+        overflow: hidden;
+        color: #636363;
+        text-overflow: ellipsis;
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .checkbox {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+      }
+      input + .checkbox {
+        background-image: url('@/images/Done.svg');
+      }
+
+      input:checked + .checkbox {
+        background-image: url('@/images/check.svg');
+        background-color: var(--blue, #0760fb);
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      input {
+        display: none;
+      }
+    }
+
+    .whenContainer {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      span {
+        color: #636363;
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      .when {
+        color: #636363;
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .archive {
+        width: 20px;
+        height: 20px;
+      }
+
+      input {
+        display: none;
+      }
+
+      input:checked + .archive {
+        background-image: url('@/images/archive.svg');
+      }
+
+      input + .archive {
+        background-image: url('@/images/archive_Done.svg');
+      }
+    }
+  }
+}

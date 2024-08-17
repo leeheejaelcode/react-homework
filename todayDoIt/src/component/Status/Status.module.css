@@ -1,0 +1,41 @@
+.statusContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+  margin: 30px 0 10px;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    color: var(--Status-deactive, #979797);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    &:hover {
+      color: var(--blue, #0760fb);
+    }
+  }
+
+  span {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 4px;
+    height: 20px;
+    background: var(--Status-deactive, #979797);
+    font-size: 12px;
+    color: var(--white, #fff);
+  }
+}

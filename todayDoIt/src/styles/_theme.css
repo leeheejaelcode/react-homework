@@ -10,7 +10,6 @@
   --gray-500: #393939;
 
   --background: var(--gray-900);
-  /* --forground: var(--gray-50); */
   --border-color: var(--gray-700);
   --border-thickness: 0.5px;
 
@@ -19,9 +18,7 @@
   --lightblue: #e2ebfa;
 
   --rounded-none: 0;
-  /* --rounded-xs: 2px; */
   --rounded-sm: 6px;
   --rounded-md: 12px;
-  /* --rounded-lg: 8px;  */
   --rounded-full: 9999px;
 }
