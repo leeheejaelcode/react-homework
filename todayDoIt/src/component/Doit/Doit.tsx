@@ -2,10 +2,12 @@ import S from '@/component/Doit/Doit.module.css';
 import { Status } from '@/component/Status/Status';
 export function Doit({
   TodoData,
+  filteredData,
   checkedTodo,
   checkedArchive,
   handleFilterTodo,
   handleFilterDone,
+  handleFilterAll,
 }) {
   const handleCheck = (e) => {
     console.log(e.target, e.target.checked);
@@ -17,9 +19,10 @@ export function Doit({
         TodoData={TodoData}
         handleFilterTodo={handleFilterTodo}
         handleFilterDone={handleFilterDone}
+        handleFilterAll={handleFilterAll}
       />
       <ul className={S.container}>
-        {TodoData.map(
+        {filteredData.map(
           (
             { title, what, when, startTime, endTime, id, todo, done, archive },
             index
@@ -33,7 +36,7 @@ export function Doit({
             );
 
             return (
-              <li key={index} className={S.info}>
+              <li key={id} className={S.info}>
                 <div className={S.doitContainer}>
                   {titleLength}
                   <p className={S.what}>{what}</p>

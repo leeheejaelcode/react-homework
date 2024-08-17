@@ -17,6 +17,7 @@ export default function Page() {
 
   const [modal, setModal] = useState(false);
   const [TodoData, setTodoData] = useState(INITIAL_DATA);
+  const [filteredData, setFilteredData] = useState(TodoData);
   const handleModalOpen = () => {
     setModal(true);
   };
@@ -59,6 +60,7 @@ export default function Page() {
       }
       return item;
     });
+    console.log(updatedData, 'todo');
 
     setTodoData(updatedData);
   };
@@ -79,11 +81,16 @@ export default function Page() {
 
   const handleFilterTodo = () => {
     const updatedData = TodoData.filter((item) => item.todo);
-    setTodoData(updatedData);
+    setFilteredData(updatedData);
   };
+
   const handleFilterDone = () => {
     const updatedData = TodoData.filter((item) => item.done);
-    setTodoData(updatedData);
+    setFilteredData(updatedData);
+  };
+
+  const handleFilterAll = () => {
+    setFilteredData(TodoData);
   };
 
   return (
@@ -107,17 +114,19 @@ export default function Page() {
       </Button>
       <Doit
         TodoData={TodoData}
+        filteredData={filteredData}
         checkedTodo={toggleTodoDoneStatus}
         checkedArchive={handleCheckedArchive}
         handleFilterTodo={handleFilterTodo}
         handleFilterDone={handleFilterDone}
+        handleFilterAll={handleFilterAll}
       />
       <Modal
         handleModalClose={handleModalClose}
         handleSaveData={handleSaveData}
         modalStyle={modalStyle}
         backdropStyle={backdropStyle}
-        TodoData={TodoData}
+        filteredData={filteredData}
       />
     </div>
   );

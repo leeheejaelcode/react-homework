@@ -7,7 +7,6 @@ export function Modal({
   handleModalClose,
   handleSaveData,
   backdropStyle,
-  TodoData,
 }) {
   let title = '';
   let what = '';

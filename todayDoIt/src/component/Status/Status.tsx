@@ -1,6 +1,11 @@
 import S from '@/component/Status/Status.module.css';
 
-export function Status({ TodoData, handleFilterDone, handleFilterTodo }) {
+export function Status({
+  TodoData,
+  handleFilterDone,
+  handleFilterTodo,
+  handleFilterAll,
+}) {
   let allLength = TodoData.length;
   let todoLength = TodoData.filter((item) => item.todo == true).length;
   let doneLength = TodoData.filter((item) => item.done == true).length;
@@ -16,10 +21,17 @@ export function Status({ TodoData, handleFilterDone, handleFilterTodo }) {
     handleFilterDone?.();
   };
 
+  const filterAll = (e) => {
+    e.preventDefault();
+    handleFilterAll?.();
+  };
+
   return (
     <ul className={S.statusContainer}>
       <li>
-        <button type="button">모두</button>
+        <button type="button" onClick={filterAll}>
+          모두
+        </button>
         <span>{allLength}</span>
       </li>
       <li>
